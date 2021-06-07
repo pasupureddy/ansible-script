@@ -1,0 +1,31 @@
+---
+- name: Create a new Demo EC2 instance
+  hosts: localhost
+  gather_facts: False
+  #  aws_access_key_id: AKIARZ5DU3OEDIJTTPZ6
+  #  aws_secret_access_key: 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
+
+  vars:
+      region: ap-south-1
+      instance_type: t2.micro
+      ami: ami-06a0b4e3b7eb7a300  # redhat
+      keypair: mvn # pem file name
+  
+  tasks:
+
+    - name: Create an ec2 instance
+      ec2:
+         key_name: "{{ keypair }}"
+         group: default  # security group name
+         instance_type: "{{ instance_type}}"
+         image: "{{ ami }}"
+         wait: true
+         region: "{{ region }}"
+         count: 1  # default
+         count_tag:
+            Name: Demo
+         instance_tags:
+            Name: Demo
+         vpc_subnet_id: subnet-2a215142
+         assign_public_ip: yes
+      register: ec2
