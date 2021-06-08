@@ -12,8 +12,8 @@
 
    - name: copy war file to tomcat server
      copy: 
-       src: /home/azureuser/hi.war
-       dest: /usr/share/tomcat/webapps/hi1.war
+       src: /tmp/hi.war
+       dest: /usr/share/tomcat/webapps/hi2.war
        remote_src: no
   
    - name: restart tomcat service
