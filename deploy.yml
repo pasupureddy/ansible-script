@@ -12,8 +12,8 @@
 
    - name: copy war file to tomcat server
      copy: 
-       src: /tmp/hi.war
-       dest: /usr/share/tomcat/webapps/hi2.war
+       src: /tmp/hello.war
+       dest: /usr/share/tomcat/webapps/hello.war
        remote_src: no
   
    - name: restart tomcat service
